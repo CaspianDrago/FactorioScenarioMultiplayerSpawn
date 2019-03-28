@@ -35,7 +35,7 @@ require("lib/player_list")
 -- For Philip. I currently do not use this and need to add proper support for
 -- commands like this in the future.
 -- require("lib/rgcommand")
--- require("lib/helper_commands")
+require("lib/helper_commands")
 
 -- Main Configuration File
 require("config")
@@ -46,6 +46,16 @@ require("lib/separate_spawns_guis")
 
 -- Create a new surface so we can modify map settings at the start.
 GAME_SURFACE_NAME="oarc"
+
+--Set up variable for Tech Research count?  Only used with changing tech scales.
+TECH_RESEARCHED_COUNT = 0
+
+-- Map loaders to logistics tech for unlocks.
+local loaders_technology_map = {
+    ['logistics'] = 'loader',
+    ['logistics-2'] = 'fast-loader',
+    ['logistics-3'] = 'express-loader'
+}
 
 --------------------------------------------------------------------------------
 -- ALL EVENT HANLDERS ARE HERE IN ONE PLACE!
@@ -80,6 +90,9 @@ script.on_init(function(event)
     if ENABLE_REGROWTH or ENABLE_ABANDONED_BASE_REMOVAL then
         OarcRegrowthInit()
     end
+	
+	game.difficulty_settings.technology_price_multiplier = TECH_MULTIPLIER
+	
 end)
 
 
@@ -297,6 +310,27 @@ script.on_event(defines.events.on_research_finished, function(event)
     if FRONTIER_ROCKET_SILO_MODE then
         RemoveRecipe(event.research.force, "rocket-silo")
     end
+	
+	--monitor finished research, unlock loader if belts are unlocked.
+	if LOADERS_ENABLED then
+		local research = event.research
+		local recipe = loaders_technology_map[research.name]
+		if recipe then
+			research.force.recipes[recipe].enabled = true
+		end
+	end
+	
+		-- Add Research Scaling.
+	
+	-- TECH_RESEARCHED_COUNT = TECH_RESEARCHED_COUNT + 1
+	-- if TECH_RESEARCHED_COUNT < 7 then 
+		-- game.difficulty_settings.technology_price_multiplier = 1
+	-- end
+	-- if TECH_RESEARCHED_COUNT >= 7 then
+	-- game.difficulty_settings.technology_price_multiplier = (2*((((0-((1/((36.8+TECH_RESEARCHED_COUNT)*0.01))^2)^((36.8+TECH_RESEARCHED_COUNT)*0.01))+2.08706514618)/2.08706514618)^0.5)*5)
+	-- end
+	
+	
 end)
 
 ----------------------------------------
