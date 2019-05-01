@@ -13,7 +13,7 @@
 
 -- This stuff is shown in the welcome GUI and Info panel. Make sure it's valid.
 WELCOME_MSG_TITLE = "Welcome to CaspianDrago's Server"
-WELCOME_MSG = "[INSERT SERVER OWNER MSG HERE test msg!]" -- Printed to player on join as well.
+WELCOME_MSG = "Welcome to CaspianDrago's Server" -- Printed to player on join as well.
 SERVER_MSG = "Rules: Be polite. Ask before changing other players's stuff. Have fun!\n"..
 "This server is running a custom scenario that allows individual starting areas on the map."
 
@@ -30,7 +30,11 @@ CONTACT_MSG = "Contact: SteamID:Oarc | oarcinae@gmail.com | discord.gg/trnpcen"
 --------------------------------------------------------------------------------
 
 -- Tech Scaling Multiplier
+--Simple Multiplier
 TECH_MULTIPLIER = 2
+--Dynamic Tech Scaling
+TECH_SCALING_ENABLED = true
+TECH_SCALING_MULTI = 1
 
 --Enable Power armor Start
 ENABLE_POWER_ARMOR_QUICK_START = true
