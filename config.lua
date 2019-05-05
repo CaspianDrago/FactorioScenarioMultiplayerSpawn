@@ -90,7 +90,7 @@ ENABLE_REGROWTH = false
 ENABLE_ABANDONED_BASE_REMOVAL = true
 
 -- Enable the new 0.17 research queue by default for all forces.
-ENABLE_RESEARCH_QUEUE = true
+ENABLE_RESEARCH_QUEUE = false
 
 -- Lock power armor mk2, atomic bombs and artillery until you launch a rocket.
 -- Also lock speed/prod module-3s
