@@ -293,6 +293,7 @@ script.on_event(defines.events.on_research_finished, function(event)
     if global.ocfg.frontier_rocket_silo then
         RemoveRecipe(event.research.force, "rocket-silo")
     end
+	
 	--monitor finished research, unlock loader if belts are unlocked.
 	if LOADERS_ENABLED then
 		local research = event.research
@@ -303,14 +304,14 @@ script.on_event(defines.events.on_research_finished, function(event)
 	end
 	
 	-- Add Research Scaling.
-	if TECH_SCALING_ENABLED then 
+	if global.ocfg.tech_scaling_enabled then 
 	
-		TECH_RESEARCHED_COUNT = TECH_RESEARCHED_COUNT + 1
-		if TECH_RESEARCHED_COUNT < 7 then 
+		global.ocfg.tech_researched_count = global.ocfg.tech_researched_count + 1
+		if global.ocfg.tech_researched_count < 7 then 
 			game.difficulty_settings.technology_price_multiplier = 1*TECH_SCALING_MULTI
 		end
-		if TECH_RESEARCHED_COUNT >= 7 then
-		game.difficulty_settings.technology_price_multiplier = (TECH_SCALING_MULTI*((((0-((1/((36.8+TECH_RESEARCHED_COUNT)*0.01))^2)^((36.8+TECH_RESEARCHED_COUNT)*0.01))+2.08706514618)/2.08706514618)^0.5)*5)
+		if global.ocfg.tech_researched_count >= 7 then
+		game.difficulty_settings.technology_price_multiplier = (global.ocfg.tech_scaling_multi*((((0-((1/((36.8+global.ocfg.tech_researched_count)*0.01))^2)^((36.8+global.ocfg.tech_researched_count)*0.01))+2.08706514618)/2.08706514618)^0.5)*5)
 		end
 	end
 

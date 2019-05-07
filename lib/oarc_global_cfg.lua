@@ -65,6 +65,9 @@ function InitOarcConfig()
         global.ocfg.frontier_fixed_pos = SILO_FIXED_POSITION
         global.ocfg.frontier_pos_table = SILO_POSITION
         global.ocfg.frontier_silo_vision = ENABLE_SILO_VISION
+		global.ocfg.tech_researched_count = TECH_RESEARCHED_COUNT
+		global.ocfg.tech_scaling_multi = TECH_SCALING_MULTI
+		global.ocfg.tech_scaling_enabled = TECH_SCALING_ENABLED
     
     -- MOD VERSION
     else
