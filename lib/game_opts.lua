@@ -45,7 +45,8 @@ local function ExpandGameOptionsGui(player)
         AddSpacer(frame, "enemy_info_spacer1")
 		
 		local science_text="Current Technology Price:" .. game.difficulty_settings.technology_price_multiplier .. "\n" ..
-		"Tech Scaling Multiplier:" .. global.ocfg.tech_scaling_multi  
+		"Tech Scaling Multiplier:" .. global.ocfg.tech_scaling_multi  .. "\n" ..
+		"Researched Technology Count" .. global.ocfg.tech_researched_count 
 
 		AddLabel(frame, "Science", science_text, my_longer_label_style)
 		AddSpacer(frame, "science_info_spacer1")
